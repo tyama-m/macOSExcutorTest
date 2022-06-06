@@ -13,7 +13,7 @@ jobs:
 #      - run: ls -la
 #      - run: sudo installer -pkg ./darwin-arm64.pkg -target /
 
-      - run: brew install go 1.17.1
+      - run: brew install go@1.17
       - run: go version # GO 2022/6/6現在 1.18.3 darwin/amd64
 
 workflows:
