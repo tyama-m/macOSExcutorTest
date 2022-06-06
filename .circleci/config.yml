@@ -9,9 +9,10 @@ jobs:
 #      - run: sw_vers # OS Version 2022/6/3現在 12.3.1
 #      - run: xcodebuild -version # Xcode Version 2022/6/3現在 13.4
 
-      - run: curl https://go.dev/dl/go1.18.3.darwin-arm64.pkg -o darwin-arm64.pkg
-      - run: ls -la
-      - run: sudo installer -pkg ./darwin-arm64.pkg -target /
+#      - run: curl https://go.dev/dl/go1.18.3.darwin-arm64.pkg -o darwin-arm64.pkg
+#      - run: ls -la
+#      - run: sudo installer -pkg ./darwin-arm64.pkg -target /
+       - run: brew install go
 
       - run: go version
 
