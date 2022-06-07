@@ -14,7 +14,7 @@ jobs:
 
 # opensslのインストール
       - run: curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o openssl-1.1.1n.tar.gz
-      - ls -la
+      - run: ls -la
 
 # Go言語のインストール
 #      - run:
