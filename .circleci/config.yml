@@ -15,11 +15,12 @@ jobs:
 
 #      - run: brew install go
       - run: brew install go@1.17
-      - run: export PATH="/usr/local/opt/go@1.17/bin:$PATH"
+      - run: export PATH="/usr/local/opt/go@1.17/1.17.11/bin:$PATH"
       - run: export
       - run: ls -la /usr/local
       - run: ls -la /usr/local/opt
       - run: ls -la /usr/local/opt/go@1.17
+      - run: ls -la /usr/local/opt/go@1.17/1.17.11
 #      - run: go version # GO 2022/6/6現在 1.18.3 darwin/amd64
 
 workflows:
