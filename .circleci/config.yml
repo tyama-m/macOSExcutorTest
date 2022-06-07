@@ -14,12 +14,13 @@ jobs:
 #      - run: sudo installer -pkg ./darwin-arm64.pkg -target /
 
 # Go言語のインストール
-      - run: brew install go
+#      - run: brew install go
 #      - run: brew install go@1.17
 #      - run: export PATH="/usr/local/opt/go@1.17/bin:$PATH"
 #      - run: go version # GO 2022/6/6現在 1.18.3 darwin/amd64
       - run: mkdir $HOME/go
-      - run: export GOPATH=$HOME/go
+      - run: ls -la $HOME
+      - run: echo 'export GOPATH=$HOME/go' >> $BASH_ENV
       - run: export
 
 workflows:
