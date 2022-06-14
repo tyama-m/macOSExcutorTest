@@ -21,7 +21,7 @@ jobs:
 
 
 #      - run: cd /usr/local/src/openssl-1.1.1n-arm64/Configurations
-      - run: cd /usr/local/src/openssl-1.1.1n-arm64
+      - run: cd ./openssl-1.1.1n-arm64
       - run: ls -la
 #      - run: sudo sed -i '' -e "s/-arch arm64/-arch arm64 -mmacosx-version-min=11.0 -isysroot \/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk/g" 10-main.conf
 
