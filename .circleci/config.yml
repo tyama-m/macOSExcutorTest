@@ -36,6 +36,7 @@ jobs:
 #      - run: sudo ./Configure shared enable-rc5 zlib darwin64-arm64-cc no-asm
       - run: sudo /Users/distiller/project/openssl-1.1.1n-arm64/Configure shared enable-rc5 zlib darwin64-arm64-cc no-asm
       - run: ls -la /Users/distiller/project/openssl-1.1.1n-arm64
+      - run: ls -la
 #      - run: sudo make /Users/distiller/project/openssl-1.1.1n-arm64/makefile
 #      - run: sudo make install
 
