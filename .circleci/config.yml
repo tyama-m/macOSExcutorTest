@@ -14,7 +14,7 @@ jobs:
       - run: curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
 
       # openssl 1.1.1n の展開~make~インストール
-      - run: sudo mkdir /usr/local/src
+      - run: sudo mkdir -p /usr/local/src
       - run: cd /usr/local/src
 
 #DEBUG
@@ -22,7 +22,7 @@ jobs:
       - run: pwd
 #DEBUG
 
-      - run: sudo cp $HOME/Downloads/openssl-1.1.1n.tar.gz .
+      - run: sudo cp -r $HOME/Downloads/openssl-1.1.1n.tar.gz .
       - run: sudo tar xzvf openssl-1.1.1n.tar.gz
 
 #DEBUG
