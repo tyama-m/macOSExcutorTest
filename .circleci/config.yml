@@ -14,7 +14,8 @@ jobs:
 
       # openssl 1.1.1n の展開~make~インストール
       - run: sudo mkdir /usr/local/src
-      - run: cd /usr/local/src
+#      - run: cd /usr/local/src
+      - run: cd
 
 #DEBUG
       - run: ls -la /usr/local/src
