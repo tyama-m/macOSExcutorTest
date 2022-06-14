@@ -19,11 +19,11 @@ jobs:
       - run: sudo cp -r openssl-1.1.1n openssl-1.1.1n-arm64
 #     - run: cd  openssl-1.1.1n-arm64/Configurations
       - run: sudo sed -i '' -e "s/-arch arm64/-arch arm64 -mmacosx-version-min=11.0 -isysroot \/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk/g" openssl-1.1.1n-arm64/Configurations/10-main.conf
-      - run: ls -la /Users/distiller/project
+#      - run: ls -la /Users/distiller/project
 
-#      - store_artifacts:
-#          path: /usr/local/src/openssl-1.1.1n-arm64/Configurations
-#          destination: 10-main.conf
+      - store_artifacts:
+          path: /Users/distiller/project/openssl-1.1.1n-arm64/Configurations
+          destination: 10-main.conf
 
 # Go言語のインストール
 ##      - run: curl https://go.dev/dl/go1.18.3.darwin-arm64.pkg -o darwin-arm64.pkg
