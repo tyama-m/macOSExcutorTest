@@ -27,7 +27,7 @@ jobs:
 
 #DEBUG
       - run: ls -la /usr/local/src
-      - run: pwd
+      - run: ls -la
 #DEBUG
 
       # arm64ビルド用に設定変更
