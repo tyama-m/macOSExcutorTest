@@ -22,7 +22,7 @@ jobs:
       - run: cd /usr/local/src
 
 #DEBUG
-      - run: ls -la
+      - run: ls -la /usr/local
       - run: pwd
 #DEBUG
 
