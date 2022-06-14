@@ -14,20 +14,17 @@ jobs:
 
       # openssl 1.1.1n の展開~make~インストール
       - run: sudo mkdir /usr/local/src
-      - run: sudo mkdir src
-      - run: cd ./src
+      - run: cd /usr/local/src
 
 #DEBUG
-      - run: ls -la
-      - run: pwd
+      - run: ls -la /usr/local/src
 #DEBUG
 
       - run: sudo cp -r $HOME/Downloads/openssl-1.1.1n.tar.gz .
       - run: sudo tar xzvf openssl-1.1.1n.tar.gz
 
 #DEBUG
-      - run: ls -la
-      - run: pwd
+      - run: ls -la /usr/local/src
 #DEBUG
 
       # arm64ビルド用に設定変更
