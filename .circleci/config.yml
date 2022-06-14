@@ -10,6 +10,7 @@ jobs:
 
 # opensslのインストール
       - run: curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
+      - run: sudo mkdir -m 666 /usr/local/src
       - run: sudo mkdir -m 666 /usr/local/src/openssl-1.1.1n-arm64
       - run: cd /usr/local/src
       - run: sudo cp $HOME/Downloads/openssl-1.1.1n.tar.gz .
