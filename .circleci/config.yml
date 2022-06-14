@@ -5,17 +5,13 @@ jobs:
     macos:
       xcode: 13.4
     steps:
+      - checkout
 #      - run: sw_vers # OS Version 2022/6/3現在 12.3.1
 #      - run: xcodebuild -version # Xcode Version 2022/6/3現在 13.4
 
 # opensslのインストール
       # openssl 1.1.1n のダウンロード
       - run: curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
-
-#DEBUG
-      - run: ls -la
-      - run: pwd
-#DEBUG
 
       # openssl 1.1.1n の展開~make~インストール
       - run: sudo mkdir /usr/local/src
