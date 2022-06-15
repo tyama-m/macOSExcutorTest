@@ -15,7 +15,8 @@ jobs:
           #ls -la $HOME/Downloads
           #End DEBUG
           cd $HOME/Downloads
-          sudo installer -pkg Command_Line_Tools_for_Xcode_13.4.dmg -target /
+          ls -la
+          #sudo installer -pkg Command_Line_Tools_for_Xcode_13.4.dmg -target /
 
       # opensslのインストール
       # - run:
