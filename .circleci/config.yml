@@ -55,7 +55,7 @@ jobs:
           command: |
             cd /usr/local/src/openssl-1.1.1n-arm64
             sudo ./Configure shared enable-rc5 zlib darwin64-arm64-cc no-asm
-            sudo make /Users/distiller/project/openssl-1.1.1n-arm64/makefile
+            sudo make
             sudo make install
 
       - run:
