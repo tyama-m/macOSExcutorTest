@@ -69,6 +69,7 @@ jobs:
           command: |
             cd /usr/local/src/openssl-1.1.1n-x86_64
             sudo ./Configure darwin64-x86_64-cc shared
+            sudo make
             sudo make install
 
 # ユニバーサルライブラリ作成
