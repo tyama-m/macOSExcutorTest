@@ -11,12 +11,12 @@ jobs:
       # Command Line Toolsのインストール
       - run: |
           curl https://download.developer.apple.com/Developer_Tools/Command_Line_Tools_for_Xcode_13.4/Command_Line_Tools_for_Xcode_13.4.dmg -o $HOME/Downloads/Command_Line_Tools_for_Xcode_13.4.dmg
-#DEBUG
-##      - run: ls -la $HOME/Downloads
-#DEBUG
+          #Start DEBUG
+          #ls -la $HOME/Downloads
+          #End DEBUG
           sudo installer -pkg $HOME/Downloads/Command_Line_Tools_for_Xcode_13.4.dmg -target /
 
-      # # opensslのインストール
+      # opensslのインストール
       # - run:
       #     name: "openssl 1.1.1n のダウンロード"
       #     command: curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
