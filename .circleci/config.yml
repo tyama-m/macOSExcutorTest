@@ -9,9 +9,9 @@ jobs:
 #      - run: xcodebuild -version # Xcode Version 2022/6/3現在 13.4
 
 # Command Line Toolsのインストール
-      - run: curl https://download.developer.apple.com/Developer_Tools/Command_Line_Tools_for_Xcode_13.4/Command_Line_Tools_for_Xcode_13.4.dmg -o $HOME/Downloads/Command_Line_Tools_for_Xcode_13.4.dmg
+#      - run: curl https://download.developer.apple.com/Developer_Tools/Command_Line_Tools_for_Xcode_13.4/Command_Line_Tools_for_Xcode_13.4.dmg -o $HOME/Downloads/Command_Line_Tools_for_Xcode_13.4.dmg
 #DEBUG
-      - run: ls -la $HOME/Downloads
+##      - run: ls -la $HOME/Downloads
 #DEBUG
 
 
@@ -21,10 +21,15 @@ jobs:
 #      - run: curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
 
       # openssl 1.1.1n の展開~make~インストール
-#      - run: sudo mkdir /usr/local/src
-#      - run: cd /usr/local/src
+      - run: |
+          sudo mkdir /usr/local/src
+          cd /usr/local/src
+          pwd
+          ls -la
 #DEBUG
-#      - run: ls -la /usr/local/src
+      - run: |
+          pwd
+          ls -la
 #DEBUG
 #      - run: sudo cp -r $HOME/Downloads/openssl-1.1.1n.tar.gz .
 #      - run: sudo tar xzvf openssl-1.1.1n.tar.gz
