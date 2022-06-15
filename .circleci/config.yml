@@ -15,32 +15,34 @@ jobs:
 #DEBUG
 
 
+      # opensslのインストール
+      - run:
+          name: "openssl 1.1.1n のダウンロード"
+          command: curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
 
       - run:
-          name: "opensslのインストール"
+          name: "openssl 1.1.1n の展開～make～インストール"
           command: |
-            # openssl 1.1.1n のダウンロード
-            curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
-
-            # openssl 1.1.1n の展開～make～インストール
             sudo mkdir -p /usr/local/src
             cd /usr/local/src
-            #DEBUG
-            pwd
-            #DEBUG
-#DEBUG
-#      - run: sudo cp -r $HOME/Downloads/openssl-1.1.1n.tar.gz .
-#      - run: sudo tar xzvf openssl-1.1.1n.tar.gz
+            sudo cp -r $HOME/Downloads/openssl-1.1.1n.tar.gz .
+            sudo tar xzvf openssl-1.1.1n.tar.gz
 
-      # arm64ビルド用に設定変更
-#      - run: sudo cp -r openssl-1.1.1n openssl-1.1.1n-arm64
-#     - run: cd  openssl-1.1.1n-arm64/Configurations ↓だと入れないけど見ることはできる。
-#     - run: cd /Users/distiller/project/openssl-1.1.1n-arm64/Configurations
-#      - run: sudo sed -i '' -e "s/-arch arm64/-arch arm64 -mmacosx-version-min=11.0 -isysroot \/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk/g" openssl-1.1.1n-arm64/Configurations/10-main.conf
-#      - run: sudo sed -i '' -e "s/ios64/macosx/g" openssl-1.1.1n-arm64/Configurations/10-main.conf
+      - run:
+          name: "arm64ビルド用に設定変更"
+          command: |
+            sudo cp -r openssl-1.1.1n openssl-1.1.1n-arm64
+            cd /usr/local/src
+            cd openssl-1.1.1n-arm64/Configurations
+            #Start DEBUG
+            pwd
+            #End DEBUG
+            sudo sed -i '' -e "s/-arch arm64/-arch arm64 -mmacosx-version-min=11.0 -isysroot \/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk/g" 10-main.conf
+            sudo sed -i '' -e "s/ios64/macosx/g" 10-main.conf
 
 #Start DEBUG
-#     - run: ls -la /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
+      - run: |
+            ls -la /usr/local/src/openssl-1.1.1n-arm64/Configurations
 #     - store_artifacts:
 #         path: /Users/distiller/project/openssl-1.1.1n-arm64/Configurations/10-main.conf
 #End DEBUG
