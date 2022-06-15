@@ -5,41 +5,41 @@ jobs:
     macos:
       xcode: 13.4
     steps:
-#      - run: sw_vers # OS Version 2022/6/3現在 12.3.1
-#      - run: xcodebuild -version # Xcode Version 2022/6/3現在 13.4
+##      - run: sw_vers # OS Version 2022/6/3現在 12.3.1
+##      - run: xcodebuild -version # Xcode Version 2022/6/3現在 13.4
 
-# Command Line Toolsのインストール
-#      - run: curl https://download.developer.apple.com/Developer_Tools/Command_Line_Tools_for_Xcode_13.4/Command_Line_Tools_for_Xcode_13.4.dmg -o $HOME/Downloads/Command_Line_Tools_for_Xcode_13.4.dmg
+      # Command Line Toolsのインストール
+      - run: |
+          curl https://download.developer.apple.com/Developer_Tools/Command_Line_Tools_for_Xcode_13.4/Command_Line_Tools_for_Xcode_13.4.dmg -o $HOME/Downloads/Command_Line_Tools_for_Xcode_13.4.dmg
 #DEBUG
 ##      - run: ls -la $HOME/Downloads
 #DEBUG
+          sudo installer -pkg $HOME/Downloads/Command_Line_Tools_for_Xcode_13.4.dmg -target /
 
-      - run: exit 0
+      # # opensslのインストール
+      # - run:
+      #     name: "openssl 1.1.1n のダウンロード"
+      #     command: curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
 
-      # opensslのインストール
-      - run:
-          name: "openssl 1.1.1n のダウンロード"
-          command: curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
+      # - run:
+      #     name: "openssl 1.1.1n の展開～make～インストール"
+      #     command: |
+      #       sudo mkdir -p /usr/local/src
+      #       cd /usr/local/src
+      #       sudo cp -r $HOME/Downloads/openssl-1.1.1n.tar.gz .
+      #       sudo tar xzvf openssl-1.1.1n.tar.gz
 
-      - run:
-          name: "openssl 1.1.1n の展開～make～インストール"
-          command: |
-            sudo mkdir -p /usr/local/src
-            cd /usr/local/src
-            sudo cp -r $HOME/Downloads/openssl-1.1.1n.tar.gz .
-            sudo tar xzvf openssl-1.1.1n.tar.gz
-
-      - run:
-          name: "arm64ビルド用に設定変更"
-          command: |
-            cd /usr/local/src
-            sudo cp -r openssl-1.1.1n openssl-1.1.1n-arm64
-            cd openssl-1.1.1n-arm64/Configurations
-            #Start DEBUG
-            pwd
-            #End DEBUG
-            sudo sed -i '' -e "s/-arch arm64/-arch arm64 -mmacosx-version-min=11.0 -isysroot \/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk/g" 10-main.conf
-            sudo sed -i '' -e "s/ios64/macosx/g" 10-main.conf
+      # - run:
+      #     name: "arm64ビルド用に設定変更"
+      #     command: |
+      #       cd /usr/local/src
+      #       sudo cp -r openssl-1.1.1n openssl-1.1.1n-arm64
+      #       cd openssl-1.1.1n-arm64/Configurations
+      #       #Start DEBUG
+      #       pwd
+      #       #End DEBUG
+      #       sudo sed -i '' -e "s/-arch arm64/-arch arm64 -mmacosx-version-min=11.0 -isysroot \/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk/g" 10-main.conf
+      #       sudo sed -i '' -e "s/ios64/macosx/g" 10-main.conf
 
 #Start DEBUG
 ##      - run: |
