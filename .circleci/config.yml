@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  test:
+  build:
     macos:
       xcode: 13.4
     steps:
@@ -16,18 +16,16 @@ jobs:
 
 
 
-# opensslのインストール
+      -run:
+        name: "opensslのインストール"
+        command: |
       # openssl 1.1.1n のダウンロード
-#      - run: curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
+          curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
 
       # openssl 1.1.1n の展開~make~インストール
-      - run: |
-          sudo mkdir /usr/local/src
+          sudo mkdir -p /usr/local/src
           cd /usr/local/src
-          pwd
-          ls -la
 #DEBUG
-      - run: |
           pwd
           ls -la
 #DEBUG
@@ -87,4 +85,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test
+      - build
