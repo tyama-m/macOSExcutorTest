@@ -16,18 +16,18 @@ jobs:
 
 
 
-      -run:
-        name: "opensslのインストール"
-        command: |
-      # openssl 1.1.1n のダウンロード
-          curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
+      - run:
+          name: "opensslのインストール"
+          command: |
+            # openssl 1.1.1n のダウンロード
+            curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
 
-      # openssl 1.1.1n の展開~make~インストール
-          sudo mkdir -p /usr/local/src
-          cd /usr/local/src
-#DEBUG
-          pwd
-          ls -la
+            # openssl 1.1.1n の展開～make～インストール
+            sudo mkdir -p /usr/local/src
+            cd /usr/local/src
+            #DEBUG
+            pwd
+            #DEBUG
 #DEBUG
 #      - run: sudo cp -r $HOME/Downloads/openssl-1.1.1n.tar.gz .
 #      - run: sudo tar xzvf openssl-1.1.1n.tar.gz
