@@ -41,10 +41,10 @@ jobs:
             sudo sed -i '' -e "s/ios64/macosx/g" 10-main.conf
 
 #Start DEBUG
-      - run: |
-            ls -la /usr/local/src/openssl-1.1.1n-arm64/Configurations
-#     - store_artifacts:
-#         path: /Users/distiller/project/openssl-1.1.1n-arm64/Configurations/10-main.conf
+#      - run: |
+#            ls -la /usr/local/src/openssl-1.1.1n-arm64/Configurations
+      - store_artifacts:
+          path: /usr/local/src/openssl-1.1.1n-arm64/Configurations/10-main.conf
 #End DEBUG
 
       # make
