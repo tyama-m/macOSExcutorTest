@@ -72,7 +72,20 @@ jobs:
             sudo make
             sudo make install
 
-# ユニバーサルライブラリ作成
+      - run:
+          name: "ユニバーサルライブラリ作成"
+          command: |
+            cd /usr/local/src
+            sudo mkdir -p openssl-mac
+            sudo lipo -create openssl-1.1.1n-arm64/libcrypto.1.1.dylib openssl-1.1.1n-x86_64/libcrypto.1.1.dylib -output openssl-mac/libcrypto.1.1.dylib
+            sudo lipo -create openssl-1.1.1n-arm64/libcrypto.a openssl-1.1.1n-x86_64/libcrypto.a -output openssl-mac/libcrypto.a
+            sudo lipo -create openssl-1.1.1n-arm64/libssl.1.1.dylib openssl-1.1.1n-x86_64/libssl.1.1.dylib -output openssl-mac/libssl.1.1.dylib
+            sudo lipo -create openssl-1.1.1n-arm64/libssl.a openssl-1.1.1n-x86_64/libssl.a -output openssl-mac/libssl.a
+            # Start DEBUG
+            cd openssl-mac
+            lipo -info libcrypto.1.1.dylib
+            # End DEBUG
+
 
 # Go言語のインストール
 ##      - run: curl https://go.dev/dl/go1.18.3.darwin-arm64.pkg -o darwin-arm64.pkg
