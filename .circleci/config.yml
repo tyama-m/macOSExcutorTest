@@ -84,8 +84,23 @@ jobs:
             # Start DEBUG
             cd openssl-mac
             lipo -info libcrypto.1.1.dylib
+            lipo -info libcrypto.a
+            lipo -info libssl.1.1.dylib
+            lipo -info libssl.a
             # End DEBUG
 
+      - run:
+          name: "ライブラリコピー"
+          command: |
+            sudo mkdir -p /usr/local/lib
+            cd /usr/local/src/openssl-mac
+            sudo cp lib* /usr/local/lib
+
+#Start DEBUG
+      - run:
+          name: "確認"
+          command: openssl version
+#End DEBUG
 
 # Go言語のインストール
 ##      - run: curl https://go.dev/dl/go1.18.3.darwin-arm64.pkg -o darwin-arm64.pkg
