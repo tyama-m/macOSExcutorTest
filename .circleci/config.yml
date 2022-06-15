@@ -5,8 +5,11 @@ jobs:
     macos:
       xcode: 13.4
     steps:
-      - run: locale
+      - run: |
+          locale ja_JP.UTF-8
+          locale
 
+      - run: locale
 
   build:
     macos:
