@@ -26,10 +26,10 @@ jobs:
       - run:
           name: "GOPATH の設定"
           command: |
-            go env
             mkdir -p $HOME/go1
-            ls -la $HOME
-            echo 'export GOPATH=$HOME/go1' >> $BASH_ENV
+            ls -la $HOME/bin
+            export GOPATH=$HOME/go1
+            echo 'export GOPATH=$HOME/go' >> $BASH_ENV
             #DEBUG
             go env
             #DEBUG
@@ -38,6 +38,7 @@ jobs:
   build:
     macos:
       xcode: 13.4
+    resource_class: medium
     steps:
       # TimeZoneを設定する
       - run: sudo systemsetup -settimezone Asia/Tokyo
