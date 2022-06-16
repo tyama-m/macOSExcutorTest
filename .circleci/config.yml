@@ -26,6 +26,7 @@ jobs:
       - run:
           name: "GOPATH の設定"
           command: |
+            go env
             mkdir -p $HOME/go
             echo 'export GOPATH=$HOME/go' >> $BASH_ENV
             #DEBUG
