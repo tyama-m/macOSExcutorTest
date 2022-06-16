@@ -6,8 +6,8 @@ jobs:
       xcode: 13.4
     steps:
       - run: |
-          sudo systemsetup -settimezone Asia/Tokyo
           sudo systemsetup -gettimezone
+          sudo systemsetup -settimezone Asia/Tokyo
 
       - run: sudo systemsetup -gettimezone
 
@@ -137,4 +137,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - build
+      - test
