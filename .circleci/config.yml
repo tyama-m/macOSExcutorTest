@@ -137,4 +137,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test
+      - build
