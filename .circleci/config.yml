@@ -20,7 +20,7 @@ jobs:
           command: |
             brew install go
             #DEBUG
-            ls -la /usr/local/go/bin
+            go env
             go version
             #DEBUG
 
