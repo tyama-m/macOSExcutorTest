@@ -6,10 +6,10 @@ jobs:
       xcode: 13.4
     steps:
       - run: |
-          localectl set-locale LANG=ja_JP.UTF-8
-          locale
+          sudo systemsetup -settimezone Asia/Tokyo
+          sudo systemsetup -gettimezone
 
-      - run: locale
+      - run: sudo systemsetup -gettimezone
 
   build:
     macos:
