@@ -39,7 +39,7 @@ jobs:
       - run:
           name: "libtoolのインストール"
           command: |
-            mkdir -p /usr/local/src
+            sudo mkdir -p /usr/local/src
             cd /usr/local/src
             sudo curl -OL http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz
             sudo tar xzvf libtool-2.4.6.tar.gz
