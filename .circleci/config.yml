@@ -20,7 +20,8 @@ jobs:
           command: |
             brew install go
             #DEBUG
-            export
+            ls -la /usr/local/go/bin
+#            export
             go version
             #DEBUG
 
@@ -153,7 +154,6 @@ jobs:
             #DEBUG
             export
             go version
-            ls -la /usr/local/go/bin
             #DEBUG
 
       - run:
