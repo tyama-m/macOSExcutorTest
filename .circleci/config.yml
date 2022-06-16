@@ -20,17 +20,16 @@ jobs:
           command: |
             brew install go
             #DEBUG
-            ls -la /Users/distiller/go
             go version
             #DEBUG
 
       - run:
           name: "GOPATH の設定"
           command: |
-            mkdir $HOME/go
+            mkdir -p $HOME/go
             echo 'export GOPATH=$HOME/go' >> $BASH_ENV
             #DEBUG
-            export
+            go env
             #DEBUG
 
   build:
