@@ -26,14 +26,28 @@ jobs:
       - run:
           name: "GOPATH の設定"
           command: |
-            mkdir -p $HOME/go1
-            ls -la $HOME/bin
-            export GOPATH=$HOME/go1
-            echo 'export GOPATH=$HOME/go' >> $BASH_ENV
+            mkdir -p $HOME/go
+            export GOPATH=$HOME/go
             #DEBUG
             go env
             #DEBUG
 
+  test3:
+    macos:
+      xcode: 13.4
+    steps:
+      - run:
+          name: "libtoolのインストール"
+          command: |
+            mkdir -p /usr/local/src
+            cd /usr/local/src
+            sudo curl -OL http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz
+            sudo tar xzvf libtool-2.4.6.tar.gz
+            cd libtool-2.4.6
+            ./configure
+            sudo make
+            sudo make install
+            man libtool
 
   build:
     macos:
@@ -154,17 +168,16 @@ jobs:
           command: |
             brew install go
             #DEBUG
-            export
-            go version
+            #go version
             #DEBUG
 
       - run:
           name: "GOPATH の設定"
           command: |
-            mkdir $HOME/go
-            echo 'export GOPATH=$HOME/go' >> $BASH_ENV
+            mkdir -p $HOME/go
+            export GOPATH=$HOME/go
             #DEBUG
-            export
+            #export
             #DEBUG
 
 # ソースコードの取得
@@ -173,4 +186,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test2
+      - test3
