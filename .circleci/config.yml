@@ -15,17 +15,20 @@ jobs:
     macos:
       xcode: 13.4
     steps:
+      # TimeZoneを設定する
+      - run: sudo systemsetup -settimezone Asia/Tokyo
+
 ##      - run: sw_vers # OS Version 2022/6/3現在 12.3.1
 ##      - run: xcodebuild -version # Xcode Version 2022/6/3現在 13.4
 
       # Command Line Toolsのインストール
+      # VMではこのToolが入っていないため openssl の確認でエラーとなっていたが、Excutorではエラーにならない（入ってる？）のでコメントアウト
       # - run: |
       #     # curl https://download.developer.apple.com/Developer_Tools/Command_Line_Tools_for_Xcode_13.4/Command_Line_Tools_for_Xcode_13.4.dmg -o $HOME/Downloads/Command_Line_Tools_for_Xcode_13.4.dmg
       #     # #Start DEBUG
       #     # #ls -la $HOME/Downloads
       #     # #End DEBUG
       #     # cd $HOME/Downloads
-      #     # ls -la
       #     # #sudo installer -pkg Command_Line_Tools_for_Xcode_13.4.dmg -target /
 
       # opensslのインストール
