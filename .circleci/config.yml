@@ -153,6 +153,7 @@ jobs:
             #DEBUG
             export
             go version
+            ls -la /usr/local/go/bin
             #DEBUG
 
       - run:
