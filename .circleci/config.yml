@@ -45,9 +45,9 @@ jobs:
             sudo tar xzvf libtool-2.4.6.tar.gz
             cd libtool-2.4.6
             sudo ./configure
-            # sudo make
-            # sudo make install
-            # man libtool
+            sudo make
+            sudo make install
+            man libtool
 
   build:
     macos:
