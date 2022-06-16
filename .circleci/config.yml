@@ -21,7 +21,6 @@ jobs:
             brew install go
             #DEBUG
             ls -la /usr/local/go/bin
-#            export
             go version
             #DEBUG
 
