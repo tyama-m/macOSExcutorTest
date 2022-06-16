@@ -11,6 +11,28 @@ jobs:
 
       - run: sudo systemsetup -gettimezone
 
+  test2:
+    macos:
+      xcode: 13.4
+    steps:
+      - run:
+          name: "go インストール"
+          command: |
+            brew install go
+            #DEBUG
+            export
+            go version
+            #DEBUG
+
+      - run:
+          name: "GOPATH の設定"
+          command: |
+            mkdir $HOME/go
+            echo 'export GOPATH=$HOME/go' >> $BASH_ENV
+            #DEBUG
+            export
+            #DEBUG
+
   build:
     macos:
       xcode: 13.4
@@ -120,16 +142,27 @@ jobs:
 ##      - run: ls -la
 ##      - run: sudo installer -pkg ./darwin-arm64.pkg -target /
 
-#      - run:
-#         name: "go install"
-#         command: brew install go
 ##      - run: brew install go@1.17
 ##      - run: export PATH="/usr/local/opt/go@1.17/bin:$PATH"
 ##      - run: go version # GO 2022/6/6現在 1.18.3 darwin/amd64
 
-#      - run: mkdir $HOME/go
-#      - run: echo 'export GOPATH=$HOME/go' >> $BASH_ENV
-##      - run: export
+      - run:
+          name: "go インストール"
+          command: |
+            brew install go
+            #DEBUG
+            export
+            go version
+            #DEBUG
+
+      - run:
+          name: "GOPATH の設定"
+          command: |
+            mkdir $HOME/go
+            echo 'export GOPATH=$HOME/go' >> $BASH_ENV
+            #DEBUG
+            export
+            #DEBUG
 
 # ソースコードの取得
 #      - checkout
@@ -137,4 +170,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test
+      - test2
