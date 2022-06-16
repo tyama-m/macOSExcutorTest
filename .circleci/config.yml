@@ -28,12 +28,12 @@ jobs:
           command: |
             go env
             mkdir -p $HOME/go1
-            export GOPATH=$HOME/go1
+            ls -la $HOME
+            echo 'export GOPATH=$HOME/go1' >> $BASH_ENV
             #DEBUG
             go env
             #DEBUG
 
-#            echo 'export GOPATH=$HOME/go1' >> $BASH_ENV
 
   build:
     macos:
