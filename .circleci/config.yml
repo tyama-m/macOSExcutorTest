@@ -49,6 +49,24 @@ jobs:
             sudo make install
             #man libtool
 
+  test4:
+    macos:
+      xcode: 13.4
+    steps:
+      - run:
+          name: "autoconfのインストール"
+          command: |
+            cd /usr/local/src
+            sudo curl -O -L http://ftpmirror.gnu.org/autoconf/autoconf-2.71.tar.gz
+            sudo tar xzvf autoconf-2.71.tar.gz
+            cd autoconf-2.71
+            sudo ./configure
+            sudo make
+            sudo make install
+
+
+
+
   build:
     macos:
       xcode: 13.4
@@ -186,4 +204,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test3
+      - test4
