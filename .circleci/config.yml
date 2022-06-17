@@ -68,9 +68,9 @@ jobs:
             sudo ./configure
             sudo make
             sudo make install
-
-
-
+#Start DEBUG
+      - run: autoconf --version
+#End DEBUG
 
   build:
     macos:
