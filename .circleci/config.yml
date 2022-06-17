@@ -86,15 +86,15 @@ jobs:
             cd /usr/local/src
             sudo cp $HOME/Downloads/protobuf-all-3.20.1.tar.gz .
             sudo tar zxvf protobuf-all-3.20.1.tar.gz
-            cd protobuf-3.20.1
-            sudo ./autogen.sh
-            sudo ./configure
-            sudo make
-            sudo make check
-            sudo make install
-#Start DEBUG
-      - run: protoc --version
-#End DEBUG
+#             cd protobuf-3.20.1
+#             sudo ./autogen.sh
+#             sudo ./configure
+#             sudo make
+#             sudo make check
+#             sudo make install
+# #Start DEBUG
+#       - run: protoc --version
+# #End DEBUG
 
 
 ##############################################################
