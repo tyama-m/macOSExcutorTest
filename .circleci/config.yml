@@ -36,10 +36,12 @@ jobs:
     macos:
       xcode: 13.4
     steps:
+      # テスト用フォルダーを作成しておく
+      - run: sudo mkdir -p /usr/local/src
+
       - run:
           name: "libtoolのインストール"
           command: |
-            sudo mkdir -p /usr/local/src
             cd /usr/local/src
             sudo curl -OL http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz
             sudo tar xzvf libtool-2.4.6.tar.gz
@@ -53,6 +55,9 @@ jobs:
     macos:
       xcode: 13.4
     steps:
+      # テスト用フォルダーを作成しておく
+      - run: sudo mkdir -p /usr/local/src
+
       - run:
           name: "autoconfのインストール"
           command: |
