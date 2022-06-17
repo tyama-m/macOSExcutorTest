@@ -72,6 +72,23 @@ jobs:
       - run: autoconf --version
 #End DEBUG
 
+  test5:
+    macos:
+      xcode: 13.4
+    steps:
+      # テスト用フォルダーを作成しておく
+      - run: sudo mkdir -p /usr/local/src
+
+      - run:
+          name: "プロトコルバッファ3.20.1のインストール"
+          command: |
+            curl https://github.com/protocolbuffers/protobuf/releases/tag/v3.20.1/protobuf-all-3.20.1.tar.gz -o $HOME/Downloads/protobuf-all-3.20.1.tar.gz
+            ls -la $HOME/Downloads
+
+
+
+##############################################################
+
   build:
     macos:
       xcode: 13.4
@@ -209,4 +226,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test4
+      - test5
