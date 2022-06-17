@@ -82,20 +82,19 @@ jobs:
       - run:
           name: "プロトコルバッファ3.20.1のインストール"
           command: |
-            curl https://github.com/protocolbuffers/protobuf/releases/tag/v3.20.1/protobuf-all-3.20.1.tar.gz -o $HOME/Downloads/protobuf-all-3.20.1.tar.gz
+            curl https://github.com/protocolbuffers/protobuf/releases/download/v3.20.1/protobuf-all-3.20.1.tar.gz -o $HOME/Downloads/protobuf-all-3.20.1.tar.gz
             cd /usr/local/src
             sudo cp $HOME/Downloads/protobuf-all-3.20.1.tar.gz .
-            sudo file protobuf-all-3.20.1.tar.gz
-#             sudo tar zxvf protobuf-all-3.20.1.tar.gz
-#             cd protobuf-3.20.1
-#             sudo ./autogen.sh
-#             sudo ./configure
-#             sudo make
-#             sudo make check
-#             sudo make install
-# #Start DEBUG
-#       - run: protoc --version
-# #End DEBUG
+            sudo tar zxvf protobuf-all-3.20.1.tar.gz
+            cd protobuf-3.20.1
+            sudo ./autogen.sh
+            sudo ./configure
+            sudo make
+            sudo make check
+            sudo make install
+#Start DEBUG
+      - run: protoc --version
+#End DEBUG
 
 
 ##############################################################
