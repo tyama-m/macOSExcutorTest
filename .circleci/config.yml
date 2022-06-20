@@ -86,7 +86,8 @@ jobs:
             sudo curl -O -L https://github.com/protocolbuffers/protobuf/releases/download/v3.20.1/protobuf-all-3.20.1.tar.gz
             sudo tar zxvf protobuf-all-3.20.1.tar.gz
             cd protobuf-3.20.1
-            sudo ./autogen.sh
+            ls -la
+            # sudo ./autogen.sh
             # sudo ./configure
             # sudo make
             # sudo make check
