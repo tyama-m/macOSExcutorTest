@@ -38,7 +38,6 @@ jobs:
     steps:
       # テスト用フォルダーを作成しておく
       - run: sudo mkdir -p /usr/local/src
-
       - run:
           name: "libtoolのインストール"
           command: |
@@ -57,7 +56,6 @@ jobs:
   #   steps:
   #     # テスト用フォルダーを作成しておく
   #     - run: sudo mkdir -p /usr/local/src
-
       - run:
           name: "autoconfのインストール"
           command: |
@@ -72,13 +70,33 @@ jobs:
       - run: autoconf --version
 #End DEBUG
 
-  # test5:
+  test5:
+    macos:
+      xcode: 13.4
+    steps:
+      # テスト用フォルダーを作成しておく
+      - run: sudo mkdir -p /usr/local/src
+      - run:
+          name: "automakeのインストール"
+          command: |
+            cd /usr/local/src
+            sudo curl -O -L http://ftpmirror.gnu.org/automake/automake-1.16.5.tar.gz
+            sudo tar xzvf automake-1.16.5.tar.gz
+            cd automake-1.16.5
+            sudo ./configure
+            sudo make
+            sudo make install
+#Start DEBUG
+      - run: automake --version
+#End DEBUG
+
+
+  # test6:
   #   macos:
   #     xcode: 13.4
   #   steps:
   #     # テスト用フォルダーを作成しておく
   #     - run: sudo mkdir -p /usr/local/src
-
       - run:
           name: "プロトコルバッファ3.20.1のインストール"
           command: |
@@ -235,4 +253,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test3
+      - test5
