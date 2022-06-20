@@ -114,6 +114,20 @@ jobs:
       - run: protoc --version
 #End DEBUG
 
+  test7:
+    macos:
+      xcode: 13.4
+    steps:
+      # テスト用フォルダーを作成しておく
+      - run: sudo mkdir -p /usr/local/src
+      - run:
+          name: "CocoaPodsのインストール"
+          command: |
+            cd /usr/local/src
+#Start DEBUG
+      - run: pod --version
+#End DEBUG
+
 
 ##############################################################
 
@@ -254,4 +268,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test3
+      - test7
