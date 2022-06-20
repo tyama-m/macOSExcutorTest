@@ -129,6 +129,19 @@ jobs:
       - run: pod --version # インストール済(1.11.3)
 #End DEBUG
 
+  test8:
+    macos:
+      xcode: 13.4
+    steps:
+      # テスト用フォルダーを作成しておく
+      - run: sudo mkdir -p /usr/local/src
+      - run:
+          name: "Github Download Test"
+          command: |
+            cd /usr/local/src
+            sudo curl -O -L https://github.com/tyama-m/macOSExcutorTest/tree/circleci-project-setup/.circleci/ChangeArm64BuildSetting.sh
+            ls -la
+
 
 ##############################################################
 
@@ -269,4 +282,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test7
+      - test8
