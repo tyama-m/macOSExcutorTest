@@ -32,6 +32,7 @@ jobs:
             go env
             #DEBUG
 
+#プロトコルバッファのインストール
   test3:
     macos:
       xcode: 13.4
@@ -70,12 +71,12 @@ jobs:
       - run: autoconf --version
 #End DEBUG
 
-  test5:
-    macos:
-      xcode: 13.4
-    steps:
-      # テスト用フォルダーを作成しておく
-      - run: sudo mkdir -p /usr/local/src
+  # test5:
+  #   macos:
+  #     xcode: 13.4
+  #   steps:
+  #     # テスト用フォルダーを作成しておく
+  #     - run: sudo mkdir -p /usr/local/src
       - run:
           name: "automakeのインストール"
           command: |
@@ -105,12 +106,12 @@ jobs:
             sudo tar zxvf protobuf-all-3.20.1.tar.gz
             cd protobuf-3.20.1
             sudo ./autogen.sh
-            # sudo ./configure
-            # sudo make
-            # sudo make check
-            # sudo make install
+            sudo ./configure
+            sudo make
+            sudo make check
+            sudo make install
 #Start DEBUG
-#      - run: protoc --version
+      - run: protoc --version
 #End DEBUG
 
 
@@ -253,4 +254,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test5
+      - test3
