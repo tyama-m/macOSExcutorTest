@@ -124,6 +124,7 @@ jobs:
           name: "CocoaPodsのインストール"
           command: |
             cd /usr/local/src
+            sudo gem install -n /usr/local/bin -v 1.10.1 cocoapods
 #Start DEBUG
       - run: pod --version
 #End DEBUG
