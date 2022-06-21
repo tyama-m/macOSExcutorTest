@@ -169,6 +169,12 @@ jobs:
 
       - run: ls -la $HOME/go/src/github.com/morisawa-tokyo-dev
 
+  test10:
+    macos:
+      xcode: 13.4
+    steps:
+      - run: ls -la usr/local/share/ca-certificates
+
 
 ##############################################################
 
@@ -309,5 +315,5 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test2
+      - test10
 
