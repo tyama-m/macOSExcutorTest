@@ -143,6 +143,21 @@ jobs:
             ls -la
 
 
+  test9:
+    macos:
+      xcode: 13.4
+
+    working_directory: $HOME/go/src/github.com/morisawa-tokyo-dev
+
+    steps:
+#      -run: mkdir -p $HOME/go/src/github.com/morisawa-tokyo-dev
+
+      # CheckOutテスト
+      - checkout
+
+      - run: ls -la $HOME/go/src/github.com/morisawa-tokyo-dev
+
+
 ##############################################################
 
   build:
@@ -282,4 +297,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test8
+      - test9
