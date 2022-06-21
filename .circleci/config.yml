@@ -114,6 +114,20 @@ jobs:
       - run: protoc --version
 #End DEBUG
 
+  test2.1:
+    macos:
+      xcode: 13.4
+    steps:
+      - run:
+          name: "シンボリックリンク作成"
+          command: |
+            export GOPATH=$HOME/go
+            sudo ln -sf $HOME/go/bin/protoc-gen-go /usr/local/bin/
+            ls -l /usr/local/bin
+
+#Packagesbuildのインストール
+
+
   test7:
     macos:
       xcode: 13.4
@@ -150,7 +164,7 @@ jobs:
     working_directory: $HOME/go/src/github.com/morisawa-tokyo-dev
 
     steps:
-#      -run: mkdir -p $HOME/go/src/github.com/morisawa-tokyo-dev
+#      -run: mkdir -p $HOME/go/src/github.com/morisawa-tokyo-dev なくてもOKだった。
 
       # CheckOutテスト
       - checkout
@@ -297,4 +311,8 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test9
+      - test2
+      - test2.1:
+          requires:
+            - test2      
+
