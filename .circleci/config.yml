@@ -32,6 +32,14 @@ jobs:
             go env
             #DEBUG
 
+      - run:
+          name: "シンボリックリンク作成"
+          command: |
+            export GOPATH=$HOME/go
+            sudo ln -sf $HOME/go/bin/protoc-gen-go /usr/local/bin/
+            ls -l /usr/local/bin
+
+
 #プロトコルバッファのインストール
   test3:
     macos:
@@ -114,16 +122,6 @@ jobs:
       - run: protoc --version
 #End DEBUG
 
-  test2.1:
-    macos:
-      xcode: 13.4
-    steps:
-      - run:
-          name: "シンボリックリンク作成"
-          command: |
-            export GOPATH=$HOME/go
-            sudo ln -sf $HOME/go/bin/protoc-gen-go /usr/local/bin/
-            ls -l /usr/local/bin
 
 #Packagesbuildのインストール
 
@@ -312,7 +310,4 @@ workflows:
   job-workflow:
     jobs:
       - test2
-      - test2.1:
-          requires:
-            - test2      
 
