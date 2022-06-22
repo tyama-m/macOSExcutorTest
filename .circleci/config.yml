@@ -59,12 +59,6 @@ jobs:
             sudo make install
             #man libtool
 
-  # test4:
-  #   macos:
-  #     xcode: 13.4
-  #   steps:
-  #     # テスト用フォルダーを作成しておく
-  #     - run: sudo mkdir -p /usr/local/src
       - run:
           name: "autoconfのインストール"
           command: |
@@ -79,12 +73,6 @@ jobs:
       - run: autoconf --version
 #End DEBUG
 
-  # test5:
-  #   macos:
-  #     xcode: 13.4
-  #   steps:
-  #     # テスト用フォルダーを作成しておく
-  #     - run: sudo mkdir -p /usr/local/src
       - run:
           name: "automakeのインストール"
           command: |
@@ -99,13 +87,6 @@ jobs:
       - run: automake --version
 #End DEBUG
 
-
-  # test6:
-  #   macos:
-  #     xcode: 13.4
-  #   steps:
-  #     # テスト用フォルダーを作成しておく
-  #     - run: sudo mkdir -p /usr/local/src
       - run:
           name: "プロトコルバッファ3.20.1のインストール"
           command: |
@@ -123,9 +104,21 @@ jobs:
 #End DEBUG
 
 
-#Packagesbuildのインストール
+#Packagesbuildのインストールテスト
+  test4:
+    macos:
+      xcode: 13.4
+    steps:
+      - run:
+          name: "Packagesbuildのインストール"
+          command: |
+            sudo curl http://s.sudre.free.fr/Software/files/Packages.dmg -o $HOME/Downloads/Packages.dmg
+            hdiutil mount $HOME/Downloads/Packages.dmg
+#Start DEBUG
+      - run: df
+#End DEBUG
 
-
+#CocoaPodsのインストールテスト
   test7:
     macos:
       xcode: 13.4
@@ -315,5 +308,5 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test10
+      - test4
 
