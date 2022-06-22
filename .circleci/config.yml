@@ -115,10 +115,9 @@ jobs:
             sudo curl http://s.sudre.free.fr/Software/files/Packages.dmg -o $HOME/Downloads/Packages.dmg
             hdiutil mount $HOME/Downloads/Packages.dmg
             cd "/Volumes/Packages 1.2.10/Packages"
-            ls -l
-            #installer -pkg Packages.pkg -target /
+            installer -pkg Packages.pkg -target /
 #Start DEBUG
-#      - run: Packages -v
+      - run: ls -la $HOME/Applications
 #End DEBUG
 
 #CocoaPodsのインストールテスト
