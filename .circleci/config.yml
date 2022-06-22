@@ -116,6 +116,7 @@ jobs:
             hdiutil mount $HOME/Downloads/Packages.dmg
 #Start DEBUG
       - run: df
+      - run: ls -la /Volumes/Packages
 #End DEBUG
 
 #CocoaPodsのインストールテスト
