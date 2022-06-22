@@ -117,8 +117,9 @@ jobs:
             cd "/Volumes/Packages 1.2.10/Packages"
             sudo installer -pkg Packages.pkg -target /
             cd
-            hdiutil detach "/Volumes/Packages 1.2.10" #エラーになる？無くても大丈夫か。
+            hdiutil detach "/Volumes/Packages 1.2.10"
 #Start DEBUG
+      - run: df
       - run: ls -la /Applications
 #End DEBUG
 
