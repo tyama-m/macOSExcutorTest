@@ -115,7 +115,7 @@ jobs:
             sudo curl http://s.sudre.free.fr/Software/files/Packages.dmg -o $HOME/Downloads/Packages.dmg
             hdiutil mount $HOME/Downloads/Packages.dmg
             cd "/Volumes/Packages 1.2.10/Packages"
-            installer -pkg Packages.pkg -target /
+            sudo installer -pkg Packages.pkg -target /
 #Start DEBUG
       - run: ls -la $HOME/Applications
 #End DEBUG
