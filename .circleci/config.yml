@@ -117,7 +117,7 @@ jobs:
             cd "/Volumes/Packages 1.2.10/Packages"
             sudo installer -pkg Packages.pkg -target /
 #Start DEBUG
-      - run: ls -la $HOME/Applications
+      - run: ls -la /Applications
 #End DEBUG
 
 #CocoaPodsのインストールテスト
