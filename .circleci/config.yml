@@ -157,7 +157,7 @@ jobs:
     macos:
       xcode: 13.4
 
-    working_directory: $HOME/go/src/github.com/morisawa-tokyo-dev
+    working_directory: $HOME/go/src/github.com/morisawa-tokyo-dev/morisawa-desktop-manager
 
     steps:
 #      -run: mkdir -p $HOME/go/src/github.com/morisawa-tokyo-dev なくてもOKだった。
@@ -165,7 +165,7 @@ jobs:
       # CheckOutテスト
       - checkout
 
-      - run: ls -la $HOME/go/src/github.com/morisawa-tokyo-dev
+      - run: ls -la $HOME/go/src/github.com/morisawa-tokyo-dev/morisawa-desktop-manager
 
   test10:
     macos:
