@@ -143,6 +143,8 @@ jobs:
     macos:
       xcode: 13.4
     steps:
+      - run: sudo systemsetup -settimezone Asia/Tokyo
+
       # テスト用フォルダーを作成しておく
       - run: sudo mkdir -p /usr/local/src
       - run:
