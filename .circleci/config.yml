@@ -213,6 +213,9 @@ jobs:
     macos:
       xcode: 13.4
     resource_class: medium
+
+    working_directory: $HOME/go/src/github.com/morisawa-tokyo-dev/morisawa-desktop-manager
+
     steps:
       # TimeZoneを設定する
       - run: sudo systemsetup -settimezone Asia/Tokyo
@@ -230,7 +233,9 @@ jobs:
       #     # cd $HOME/Downloads
       #     # #sudo installer -pkg Command_Line_Tools_for_Xcode_13.4.dmg -target /
 
-      # opensslのインストール
+#---------------------------------------------------
+# opensslのインストール
+#---------------------------------------------------
       - run:
           name: "openssl 1.1.1n のダウンロード"
           command: curl https://www.openssl.org/source/old/1.1.1/openssl-1.1.1n.tar.gz -o $HOME/Downloads/openssl-1.1.1n.tar.gz
@@ -294,11 +299,11 @@ jobs:
             sudo lipo -create openssl-1.1.1n-arm64/libssl.1.1.dylib openssl-1.1.1n-x86_64/libssl.1.1.dylib -output openssl-mac/libssl.1.1.dylib
             sudo lipo -create openssl-1.1.1n-arm64/libssl.a openssl-1.1.1n-x86_64/libssl.a -output openssl-mac/libssl.a
             # Start DEBUG
-            cd openssl-mac
-            lipo -info libcrypto.1.1.dylib
-            lipo -info libcrypto.a
-            lipo -info libssl.1.1.dylib
-            lipo -info libssl.a
+            # cd openssl-mac
+            # lipo -info libcrypto.1.1.dylib
+            # lipo -info libcrypto.a
+            # lipo -info libssl.1.1.dylib
+            # lipo -info libssl.a
             # End DEBUG
 
       - run:
@@ -309,12 +314,14 @@ jobs:
             sudo cp lib* /usr/local/lib
 
 #Start DEBUG
-      - run:
-          name: "確認"
-          command: openssl version
+#       - run:
+#           name: "確認"
+#           command: openssl version
 #End DEBUG
 
+#---------------------------------------------------
 # Go言語のインストール
+#---------------------------------------------------
 ##      - run: curl https://go.dev/dl/go1.18.3.darwin-arm64.pkg -o darwin-arm64.pkg
 ##      - run: ls -la
 ##      - run: sudo installer -pkg ./darwin-arm64.pkg -target /
@@ -340,10 +347,141 @@ jobs:
             #export
             #DEBUG
 
+#---------------------------------------------------
+# プロトコルバッファのインストール
+#---------------------------------------------------
+      - run:
+          name: "libtoolのインストール"
+          command: |
+            cd /usr/local/src
+            sudo curl -OL http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz
+            sudo tar xzvf libtool-2.4.6.tar.gz
+            cd libtool-2.4.6
+            sudo ./configure
+            sudo make
+            sudo make install
+            # man libtool
+
+      - run:
+          name: "autoconfのインストール"
+          command: |
+            cd /usr/local/src
+            sudo curl -O -L http://ftpmirror.gnu.org/autoconf/autoconf-2.71.tar.gz
+            sudo tar xzvf autoconf-2.71.tar.gz
+            cd autoconf-2.71
+            sudo ./configure
+            sudo make
+            sudo make install
+#Start DEBUG
+      - run: autoconf --version
+#End DEBUG
+
+      - run:
+          name: "automakeのインストール"
+          command: |
+            cd /usr/local/src
+            sudo curl -O -L http://ftpmirror.gnu.org/automake/automake-1.16.5.tar.gz
+            sudo tar xzvf automake-1.16.5.tar.gz
+            cd automake-1.16.5
+            sudo ./configure
+            sudo make
+            sudo make install
+#Start DEBUG
+      - run: automake --version
+#End DEBUG
+
+      - run:
+          name: "プロトコルバッファ3.20.1のインストール"
+          command: |
+            cd /usr/local/src
+            sudo curl -O -L https://github.com/protocolbuffers/protobuf/releases/download/v3.20.1/protobuf-all-3.20.1.tar.gz
+            sudo tar zxvf protobuf-all-3.20.1.tar.gz
+            cd protobuf-3.20.1
+            sudo ./autogen.sh
+            sudo ./configure
+            sudo make
+            sudo make check
+            sudo make install
+#Start DEBUG
+      - run: protoc --version
+#End DEBUG
+
+      - run:
+          name: "シンボリックリンクの作成"
+          command: |
+            sudo ln -sf $HOME/go/bin/protoc-gen-go /usr/local/bin/
+
+#---------------------------------------------------
+#Packagesbuildのインストール
+#---------------------------------------------------
+      - run:
+          name: "Packagesbuildのインストール"
+          command: |
+            sudo curl http://s.sudre.free.fr/Software/files/Packages.dmg -o $HOME/Downloads/Packages.dmg
+            hdiutil mount $HOME/Downloads/Packages.dmg
+            cd "/Volumes/Packages 1.2.10/Packages"
+            sudo installer -pkg Packages.pkg -target /
+            cd
+            hdiutil detach "/Volumes/Packages 1.2.10"
+#Start DEBUG
+      - run: df
+      - run: ls -la /Applications
+#End DEBUG
+
+#---------------------------------------------------
+#CocoaPodsのインストールテスト
+#---------------------------------------------------
+  test7:
+    macos:
+      xcode: 13.4
+    steps:
+      - run:
+          name: "CocoaPodsのインストール"
+          command: |
+            cd /usr/local/src
+            sudo gem install -n /usr/local/bin cocoapods
+#Start DEBUG
+      - run: pod --version # インストール済(1.11.3)
+#End DEBUG
+
+#---------------------------------------------------
+# 証明書の登録
+#---------------------------------------------------
+
+#---------------------------------------------------
 # ソースコードの取得
-#      - checkout
+#---------------------------------------------------
+      - checkout
+
+#---------------------------------------------------
+# go-sqlcipherのlinkをstatic link libcrypto.aへ変更
+#---------------------------------------------------
+      - run:
+          name: "go-sqlcipherのlinkをstatic link libcrypto.aへ変更"
+          command: |
+            export GOPATH=$HOME/go
+            cd ~/go/src/github.com/morisawa-tokyo-dev/morisawa-desktop-manager
+            go mod download
+            cd ~/go/pkg/mod/github.com/xeodou/go-sqlcipher@v0.0.0-20200505024025-122bc51f252d/
+            sudo sed -i '' -e "s/-lcrypto/-lz \/usr\/local\/lib\/libcrypto.a/g" sqlite3.go
+            cd ~/go/src/github.com/morisawa-tokyo-dev/morisawa-desktop-manager/dmCommon/dmservice/cmd/mdmservice
+            make install
+            go mod download
+
+#---------------------------------------------------
+# protoc-gen-goのインストール
+#---------------------------------------------------
+      - run:
+          name: "protoc-gen-goのインストール"
+          command: |
+            export GOPATH=$HOME/go
+            cd $GOPATH/pkg/mod/github.com/golang/protobuf@v1.5.2/protoc-gen-go
+            go install
+#Start DEBUG
+      - run: ls -la $HOME/go/bin/protoc-gen-go
+#End DEBUG
 
 workflows:
   job-workflow:
     jobs:
-      - test8
+      - build
