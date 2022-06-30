@@ -392,6 +392,7 @@ jobs:
 
       - run:
           name: "プロトコルバッファ3.20.1のインストール"
+          no_output_timeout: 1.5h
           command: |
             cd /usr/local/src
             sudo curl -O -L https://github.com/protocolbuffers/protobuf/releases/download/v3.20.1/protobuf-all-3.20.1.tar.gz
