@@ -212,7 +212,7 @@ jobs:
   build:
     macos:
       xcode: 13.4
-    parallelism: 10
+    parallelism: 3
     resource_class: medium
 
     working_directory: $HOME/go/src/github.com/morisawa-tokyo-dev/morisawa-desktop-manager
