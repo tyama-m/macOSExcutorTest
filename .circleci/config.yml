@@ -205,14 +205,17 @@ jobs:
 #          path: ~/go/pkg/mod/github.com/xeodou/go-sqlcipher@v0.0.0-20200505024025-122bc51f252d/sqlite3.go
 #End DEBUG
 
-
+  test11:
+    macos:
+      xcode: 13.4
+   steps:
+    -run: bundler -v
 
 ##############################################################
 
   build:
     macos:
       xcode: 13.4
-    parallelism: 3
     resource_class: medium
 
     working_directory: $HOME/go/src/github.com/morisawa-tokyo-dev/morisawa-desktop-manager
