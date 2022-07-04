@@ -208,8 +208,8 @@ jobs:
   test11:
     macos:
       xcode: 13.4
-   steps:
-    - run: bundler -v
+    steps:
+      - run: bundler -v
 
 ##############################################################
 
