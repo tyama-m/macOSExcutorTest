@@ -211,7 +211,8 @@ jobs:
     steps:
       - run: bundler -v #2022/07/04現在v2.3.15がインストール済み
       - run: gem install fastlane
-      - run: fastlane --version
+      - run: fastlane --version #2022/07/11現在v2.207.0がインストールされる
+      - run: ruby --version
 
 ##############################################################
 
