@@ -210,8 +210,7 @@ jobs:
       xcode: 13.4
     steps:
       - run: bundler -v #2022/07/04現在v2.3.15がインストール済み
-      #- run: gem install fastlane
-      - run: bundle update fastlane
+      - run: gem install fastlane
       - run: fastlane --version #2022/07/11現在v2.207.0がインストールされる
       - run: ruby --version #2022/07/11現在v2.7.6p219 (2022-04-12 revision c9c2245c0a) [x86_64-darwin21]
 
@@ -220,7 +219,7 @@ jobs:
   build:
     macos:
       xcode: 13.4
-    resource_class: medium
+      resource_class: macos.x86.medium.gen2
 
     working_directory: $HOME/go/src/github.com/morisawa-tokyo-dev/morisawa-desktop-manager
 
@@ -488,4 +487,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test11
+      - build
