@@ -226,9 +226,9 @@ jobs:
       - run: 
           name : "SHell Test"
           command: |
-            find $HOME/project -type f -exec chmod a+x {} +
-            $HOME/project/test1.sh     
-            $HOME/project/test2.sh     
+ #           find $HOME/project -type f -exec chmod a+x {} +
+            sudo bash $HOME/project/test1.sh     
+            sudo bash $HOME/project/test2.sh     
 
 ##############################################################
 
