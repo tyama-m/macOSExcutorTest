@@ -223,7 +223,8 @@ jobs:
     steps:
       - checkout
 
-      - run: sudo $HOME/project/test.sh     
+      - run: find $HOME/project -type f -exec chmod a+x {} +
+      - run: $HOME/project/test.sh     
 
 ##############################################################
 
