@@ -223,8 +223,12 @@ jobs:
     steps:
       - checkout
 
-      - run: find $HOME/project -type f -exec chmod a+x {} +
-      - run: $HOME/project/test.sh     
+      - run: 
+          name : "SHell Test"
+          command: |
+            find $HOME/project -type f -exec chmod a+x {} +
+            $HOME/project/test1.sh     
+            $HOME/project/test2.sh     
 
 ##############################################################
 
