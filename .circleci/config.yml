@@ -223,7 +223,7 @@ jobs:
     steps:
       - checkout
 
-      - run: $HOME/project/test.sh     
+      - run: sudo $HOME/project/test.sh     
 
 ##############################################################
 
