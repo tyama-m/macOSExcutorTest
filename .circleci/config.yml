@@ -214,6 +214,17 @@ jobs:
       - run: fastlane --version #2022/07/11現在v2.207.0がインストールされる
       - run: ruby --version #2022/07/11現在v2.7.6p219 (2022-04-12 revision c9c2245c0a) [x86_64-darwin21]
 
+  test12:
+    macos:
+      xcode: 13.4
+
+    working_directory: $HOME/project
+
+    steps:
+      - checkout
+
+      - run: $HOME/project/test.sh     
+
 ##############################################################
 
   build:
@@ -487,4 +498,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - build
+      - test12
