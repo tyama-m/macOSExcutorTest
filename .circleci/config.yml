@@ -133,8 +133,9 @@ jobs:
       - run:
           name: "CocoaPodsのインストール"
           command: |
-            cd /usr/local/src
+#            cd /usr/local/src
             sudo gem install -n /usr/local/bin cocoapods
+            pod install
 #Start DEBUG
       - run: pod --version # インストール済(1.11.3)
 #End DEBUG
@@ -504,4 +505,4 @@ jobs:
 workflows:
   job-workflow:
     jobs:
-      - test12
+      - test7
